@@ -27,7 +27,7 @@ export default function Header() {
 		     <div className = {styles.header_box}>
           
          <video autoPlay muted loop>
-          <source src="/ethbackvideo.mp4" type="video/mp4"/>  
+          <source src="/landback.mp4" type="video/mp4"/>  
           </video>
            <Box scroll = {Scrollto}>
 		     <Box1 scroll = {Scrollto}> 
