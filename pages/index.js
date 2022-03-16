@@ -13,6 +13,9 @@ export default function Home() {
           <Header/>
           <Middle/>
           <Lend/>
+          <video autoPlay>
+          <source src="/landback.mp4" type="video/mp4"/>  
+          </video>
       </>
     
     )
