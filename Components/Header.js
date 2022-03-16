@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {useContext,useEffect,useState} from 'react';
 import {LoginContext} from '../Context/metamaskContext'
 import {FaEthereum} from 'react-icons/fa'
-import {lawra} from '../Pages/landback.mp4'; 
+
 import styles from '../styles/Home.module.css'
 
 export default function Header() {
@@ -27,7 +27,7 @@ export default function Header() {
 		     <div className = {styles.header_box}>
           
          <video autoPlay muted loop>
-          <source src={lawra} type="video/mp4"/>  
+          <source src='/landback.mp4' type="video/mp4"/>  
           </video>
            <Box scroll = {Scrollto}>
 		     <Box1 scroll = {Scrollto}> 
