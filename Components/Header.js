@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {useContext,useEffect,useState} from 'react';
 import {LoginContext} from '../Context/metamaskContext'
 import {FaEthereum} from 'react-icons/fa'
-
+import Typical from 'react-typical'
 import styles from '../styles/Home.module.css'
 
 export default function Header() {
@@ -30,8 +30,10 @@ export default function Header() {
           <source src='/landback.mp4' type="video/mp4"/>  
           </video>
            <Box scroll = {Scrollto}>
+           <HeaderBox scroll = {Scrollto}>
 		     <Box1 scroll = {Scrollto}> 
-               Ethank 
+             
+                 Ethand 
                <FaEthereum size = '2rem' color = 'gray'/>
               </Box1>
 		     
@@ -43,57 +45,81 @@ export default function Header() {
                 }
              </ConnectWallet>
 		     </LoginButton>  
-		     
+	  </HeaderBox>  
+              
            </Box>
              <Text> 
-                <h3> Welcome to Ether Bank Get Ethers and Lend Ethers on an interest... </h3>
+                <h3><Typical
+                 steps={["Buy Land with No paper work and  without any Third Party Involvement",1]}
+                 loop={Infinity}
+                  wrapper="p"
+                    /> </h3>
+
+                    
 
              </Text>	
              
-            
+               
             
 		     </div>
+            
 		
 	)
 }
-
  const Text = styled.div`
     width:50%;
-    height:100%;
+   
+   
    display:flex;
-   align-items:center;
-   justify-content:center;
-    font-size:3vw;
-   margin-left:30px;
-   &h3{
-       text-align:center;
-       
-         
+   margin-top:20%;
+   @media(max-width: 801px){
+    font-size:0.8rem;
    }
+     @media(max-width: 700px){
+    font-size:0.5rem;
+   }
+    font-size:200%;
+       color:black;
+   margin-left:30px;
+   &h3{text-align:center;}
 `
  const ConnectWallet = styled.div`
     cursor:pointer;
  `
+ const Img = styled.img`
+   height:3rem;
+   margin-right:5px;
+
+
+ `
 const Box = styled.div`
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
+ 
     position:fixed;
     height:4rem;
-  
+    display:flex;
+    flex-direction:column;
     z-index:100;
     top:0;
     left:0;
     right:0;
    color:white;
-   background-color: ${props => 
+
+`
+const HeaderBox = styled.div`
+width:100%;
+height:100%;
+ background-color: ${props => 
        props.scroll?'#3C111C':""};
     transition: background-color 1s;  
-
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
 `
 const Box1 = styled.div`
   
-  
+   &img{
+     height:50px;
+   }
    font-size:1.5rem;
    color:${props => 
        props.scroll?'white':'black'};
@@ -105,7 +131,19 @@ const Box1 = styled.div`
        
     
 `
-
+const SearchBar = styled.div`
+   
+     min-width:75%;
+     min-height:70px;
+     background-color:white;
+    
+     border:7px solid #3C111C;
+       border-bottom-right-radius:20px;
+        border-bottom-left-radius:20px;
+     margin-inline:auto;
+    
+     
+  ` 
 const ConnectButton = styled.div`
    padding:0px 5px;
    font-weight:500;
@@ -117,7 +155,7 @@ const ConnectButton = styled.div`
 const LoginButton = styled.div`
    
    font-weight:600;
-   font-size:1.2rem;	
+   font-size:1.2rem;    
    display:flex;
    justify-content:center;
    align-items:center;

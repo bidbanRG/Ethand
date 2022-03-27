@@ -1,70 +1,90 @@
 import React from 'react'
 import styled from 'styled-components'
 import Plan from './Plan';
+import {BiSearchAlt} from 'react-icons/bi';
+import ImageSlider from './ImageSlider'
+import {useState,useRef,useContext} from 'react';
+import axios from 'axios';
+import {LoginContext} from '../Context/metamaskContext';
 export default function Middle() {
-
-	 const Plans = [
-   {
-   	  description:'It is an EMI system with 1.5% Interest, you have to pay monthly for certain years',
-   	  accounts:2,
-   	  Limit:'10 ethers',
-   	  id:1,
-      theme:'linear-gradient(16deg,crimson,#752025,#92282E,#B73239)',
-      color:'crimson'
-   },
-    {
-    	description:'You have pay to monthly with an Interest of 2% per year',
-    	Limit:'5 ethers',
-    	accounts:2,
-    	id:2,
-        theme:'linear-gradient(16deg,teal,#1A5E5A,#207571,#28928D)',
-        color:'#1A5E5A'
-    },
-    {
-    	description:'If you deposited Ether in past you got some badges use those to get Ether',
-    	Limit:'1.5 ethers',
-    	accounts:0,
-    	id:3,
-        theme:'linear-gradient(16deg,#5A1A5E,#48154B,#7B487E,#956D98)',
-        color:'purple'
-    }
-
- ]
-
+ 
+ 
+	 const {Searched,setSearched,plotContract} = useContext(LoginContext);
+   const InputSearch = useRef();
+   const [qwert,setqwert] = useState(null);
+   const search_handler = () => {
+      if(!plotContract) return alert('Wallet is not Connected');
+      if(!qwert) return alert('Enter the Address');
+      setSearched(qwert);  
+   }
 	return (
 	  <Div>	
-	  <h1> Our Plans</h1>
-		<Box>
-		    
-		  {
-				Plans.map( plan =>{
-                    return <Plan desc = {plan.description} 
-                         Limit = {plan.Limit}
-                         accounts = {plan.accounts}
-                         key = {plan.id} 
-                         theme = {plan.theme}
-                         color = {plan.color}
-                    /> 
-				})
-			}
-		</Box>
+	     <Box> 
+          <Input placeholder = " Enter the address of the Land owner..." 
+            onChange = {(e) => setqwert(e.target.value)}
+          />
+          <div>
+	     <SearchIcon size = '2rem' color = 'white' onClick = { search_handler}/>
+	       </div>
+	     </Box>
+
 	  </Div>
 	)
 }
-const Div = styled.div`
-   width:100%;
+const Input = styled.input`
+  width:90%;
+  height:60px;
+border-radius:30px;
+  outline:none;
+  border:0px;
   
-  text-align:center;
+   background-color:#171717;
+   font-size:1.5rem;
+   @media(max-width:601px){
+  	font-size:0.8rem;
+    width:80%;
+  	
+  }
+     @media(max-width:400px){
+      width:70%;
+     
+  	
+  }
+   color:white;
+`
+const SearchIcon = styled(BiSearchAlt)`
+  
    
+   cursor:pointer;
+
+`
+const Div = styled.div`
+   width:95%;
+  border-radius:30px;
+  height:80px;
+  box-shadow:6px 6px 7px;
+  @media(max-width:601px){
+  	height:60px
+  }
+  display:flex;
+   justify-content:center;
+   align-items:center;
+  background-color:#171717;
+  text-align:center;
+  transform:translateY(-50px);
+   margin-inline:auto;
 `
 const Box = styled.div`
+   height:80px;
+  @media(max-width:601px){
+  	height:60px
+  }
   width:100%;
-  height:420px%;
+  border-radius:30px;
+   display:flex;
+    justify-content:space-evenly;
+   align-items:center;
   display:flex;
-  flex-wrap:wrap;
-  justify-content:space-evenly;
-  align-items:center;
-   
 `
 
 
